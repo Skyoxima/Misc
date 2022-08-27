@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rotation (Animated)</title>
+        <link rel="stylesheet" href="animatedrotation.css">
+    </head>
+
+    <body>
+
+      <div style="display: flex;">
+        <div class="container">
+            <h2>4 Seconds spin<br>(set on both child and the parent)</h2>
+            <div id="first" class="spin-box">
+                <div id="first-child" class="spin-box"></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2>2 Seconds spin<br>(shouldn't be this)</h2>
+            <div id="second" class="spin-box"></div>
+        </div>
+
+        <div class="container">
+            <h2>4 Seconds spin (same-size)<br>(what should've been)</h2>
+            <div id="third" class="spin-box"></div>
+        </div>  
+      </div>
+      
+        <div class="container" style="width: 400px; height: 200px;">
+          <h2 style="position: relative; top: 0;">The problem (excess speed) only occurs when <u>both</u> child and parent element are <u>animated.</u></h2>
+        </div>
+        <div style="width: 800px;">
+          <h2 style="font-weight: 400;">After setting the "animation-fill-mode" to alternate for the parent div it can be seen that the child element rotates <u>twice as fast</u> than specified when in direction of the parent div
+          , but <u>stays still</u> when the parent changes its direction.<br><br>This leads me to believe that for the child, both its parent's and its own animation happen at the same time (internal calculation for position for the next frame)
+          which is maybe why it's twice as fast when in the same direction as of parent and still when opposing.<br><br>This may also be the reason that the child div performs more than (if)specified finite iterations.
+          </h2>
+        </div>
+    </body>
+
+    <script>
+    </script>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Everlytics Form</title>
+    <link rel="stylesheet" href="everlytics2.css" />
+  </head>
+
+  <body>
+    <form>
+      <div class="main-container">
+        <div>
+          <label for="source">Select your source</label>
+          <select name="source" id="source">
+            <option value="Google Cloud Storage">Google Cloud Storage</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="pipeline">Provide a name for pipeline</label>
+          <input
+            style="grid-column: 3 / span 3"
+            type="text"
+            name="pipelinetext"
+            id="pipelinetext"
+            placeholder="e.g., cust_shop_energy_gkateway001"
+          />
+        </div>
+        <div id="pipelineerr" class="error-hidden"></div>
+        
+        <div>
+          <label for="GCS-project-name">GCS project name</label>
+          <input
+          type="text"
+          placeholder="project-id"
+          name="GCS-project-name"
+          id="GCS-project-name"
+          style="grid-column: 3 / span 3"
+          />
+        </div>
+        <div id="GCS-project-nameerr" class="error-hidden"></div>
+        
+        <div>
+          <label for="GCS-bucket-name">GCS bucket name</label>
+          <input
+          type="text"
+          placeholder="gs://your-bucket"
+          id="GCS-bucket-name"
+          name="GCS-bucket-name"
+          style="grid-column: 3 / span 3"
+          />
+        </div>
+        <div id="GCS-bucket-nameerr" class="error-hidden"></div>
+        
+        <div style="margin-bottom: 0">
+          <label for="ICSF">Input Cloud Storage File(s)</label>
+          <input
+            type="text"
+            placeholder="GCS location of your files"
+            name="ICSF"
+            id="ICSF"
+            style="grid-column: 3 / span 3"
+          />
+        </div>
+        <div> <!-- Inside a div to also make it a grid -->
+          <p style="grid-column: 3 / span 3">
+            Example:<br />gs://your-bucket/your-files/01.csv
+          </p>
+        </div>
+        <div id="ICSFerr" class="error-hidden"></div>
+        
+        <div>
+          <label for="GCSCred">GCS credentials</label>
+          <input
+            type="text"
+            name="GCSCred"
+            id="GCSCred"
+            style="
+              grid-column: 3 / span 3;
+              background-color: rgb(175, 175, 175);
+              margin-right: 15px;
+              "
+          />
+        </div>
+        
+        <div>
+          <label for="run-every">Run Every</label>
+          <input
+          type="text"
+          placeholder="(in minutes)"
+          id="run-every"
+          name="run-every"
+          style="grid-column: 3 / span 3"
+          />
+        </div>
+        <div id="run-everyerr" class="error-hidden"></div>
+
+        <div style="margin-bottom: 0">
+          <button id='createbutton' style="grid-column: 1 / span 2">Create</button>
+          <button style="grid-column: 3 / span 3">Cancel</button>
+        </div>
+      </div>
+    </form>
+    <script src="everlytics 2.js"></script>
+  </body>
+</html>

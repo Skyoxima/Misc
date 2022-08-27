@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Everlytics Form</title>
+    <style type = "text/css">
+        .container{
+            background-color: white;
+            margin-top: 25vh;
+            margin-left: 25vw;
+            border-style: solid;
+            border-width: 2px;
+        }
+        span{
+            color: red;
+            font-size: 20px;
+        }
+        .button{
+            align-items: center;
+            background-color: blue;
+            font-weight: bold;
+            font-style: normal;
+            border-radius: 2px;
+        }
+        ::placeholder{
+            background-color: grey;
+            color: black;
+        }
+    </style>
+    <script type = "text/javascript">
+        function formvalidate()
+        {
+            regex = /[^ - _ +][a-zA-Z]{5,}^[!@#$%]/
+
+            if(document.getElementById('select').value == ""){
+                document.getElementById('serror').innerHTML = "Please Select your source"
+            }
+            else if(document.getElementById('select').value.match(regex)){
+                document.getElementById('serror').innerHTML = ""            
+            }
+            else{
+                document.getElementById('serror').innerHTML = "*Please select valid source!"
+            }
+
+            if(document.getElementById('name').value == ""){
+                document.getElementById('nerror').innerHTML = "Please Provide a name for pipeline"
+            }
+            else if(document.getElementById('name').value.match(regex)){
+                document.getElementById('nerror').innerHTML = ""            
+            }
+            else{
+                document.getElementById('nerror').innerHTML = "*Name Format is Wrong!"
+            }
+
+            if(document.getElementById('project').value == ""){
+                document.getElementById('perror').innerHTML = "Please Enter GCS project name"
+            }
+            else if(document.getElementById('project').value.match(regex)){
+                document.getElementById('perror').innerHTML = ""            
+            }
+            else{
+                document.getElementById('perror').innerHTML = "*Name Format is Wrong!"
+            }
+
+            if(document.getElementById('bucket').value == ""){
+                document.getElementById('berror').innerHTML = "Please Enter GCS project name"
+            }
+            else if(document.getElementById('bucket').value.match(regex)){
+                document.getElementById('berror').innerHTML = ""            
+            }
+            else{
+                document.getElementById('berror').innerHTML = "*Name Format is Wrong!"
+            }
+
+            if(document.getElementById('file').value == ""){
+                document.getElementById('ferror').innerHTML = "Please Select File"
+            }
+            else if(document.getElementById('file').value.match(regex)){
+                document.getElementById('ferror').innerHTML = ""            
+            }
+            else{
+                document.getElementById('ferror').innerHTML = "Please Select Appropriate File"
+            }
+
+            if(document.getElementById('credentials').value == ""){
+                document.getElementById('cerror').innerHTML = "Please Select GCS Credentials"
+            }
+            else if(document.getElementById('credentials').value.match(regex)){
+                document.getElementById('cerror').innerHTML = ""            
+            }
+            else{
+                document.getElementById('cerror').innerHTML = "Please Select Appropriate Credentials"
+            }
+
+            if(document.getElementById('time').value == ""){
+                document.getElementById('terror').innerHTML = "Please Select time"
+            }
+            else if(document.getElementById('time').value.match(regex)){
+                document.getElementById('terror').innerHTML = ""            
+            }
+            else{
+                document.getElementById('terror').innerHTML = "Please Select Appropriate time"
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div class = "container">
+        <form> 
+            <label for = "Select">Select your source : </label>
+            <input type = "file" class = "form-control" placeholder = "Google Cloud Storage" id = "select"><span id = "serror"></span><br><br>
+
+            <label for = "Name">Provide a name for pipeline : </label>
+            <input type = "text" class = "form-control" placeholder = "e.g.,cust_shop_energy_gkateway001" id = "name"><span id = "nerror"></span><br><br>
+
+            <label for = "Project">GCS Project name :</label>
+            <input type = "text"  class = "form-control" placeholder="project-id" id = "project"><span id = "perror"></span></form><br><br>
+
+            <label for = "Bucket">GCS bucket name : </label>
+            <input type = "text" class = "form-control" placeholder="gs://your-bucket" id = "bucket"><span id = "berror"></span><br><br>
+
+            <label for = "File">Input Cloud Storage File(s) : </label>
+            <input type = "text" id = "file" class = "form-control" > <textarea  placeholder="GCS Location of your files
+            Example: gs://your-bucket/your-files/01.csv"></textarea><span id = "ferror"></span><br><br>
+
+            <label for = "Credentials">GCS Credentials : </label>
+            <input type = "text" class = "form-control" placeholder="" id = "credentials"><span id = "cerror"></span><br><br>
+
+            <label for = "Time">Run Every : </label>
+            <input type = "time" class = "form-control" placeholder="(in minutes)" id = "time"><span id = "terror"></span><br><br>
+
+            <button class = "button" type = "submit" onclick = "formvalidate()">Create</button>
+            <button class = "button " type = "reload">Cancel</button>
+        </form>
+</body>
+</html>

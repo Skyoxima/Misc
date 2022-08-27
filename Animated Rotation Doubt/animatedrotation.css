@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1em;
+    color: white;
+}
+
+body {
+    min-height: 100vh;
+    padding: 50px 0;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    background-color: rgb(36, 32, 36);
+}
+
+.container {
+    position: relative;
+    width: 400px; height: 400px;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.container h2 {
+    position: absolute;
+    top: 5px;
+}
+
+.container .spin-box {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    } to {
+        transform: rotate(360deg);
+    }
+}
+
+#first {
+    position: relative;
+    width: 200px; height: 200px;
+    background-color: tan;
+    animation: spin 4s linear infinite alternate;
+    /* As soon as this animation is disabled, the child takes the mentioned seconds in its animation (as it should) but when both animations are on, the child spins twice as fast */
+}
+
+#first #first-child {
+    position: absolute;
+    width: 50px; height: 50px;
+    background-color: hotpink;
+    animation: spin 4s linear infinite;
+    /* when this is disabled, the child rotates statically according to the parent */
+    /* animation-iteration-count: 1; */
+}
+
+#second {
+    position: relative;
+    width: 50px; height: 50px;
+    background-color: thistle;
+    animation: spin 2s linear infinite;
+}
+
+#third {
+    position: relative;
+    width: 50px; height: 50px;
+    background: #b7f20a;
+    animation: spin 4s linear infinite;
+}
+
+/* good to track rotation with peripheral vision */
+.spin-box::before {
+    content: '';
+    top: 0; left: 0;
+    position: absolute;
+    width: 10px; height: 10px;
+    background-color: red;
+}
